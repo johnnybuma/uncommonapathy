@@ -8,12 +8,12 @@
   <header class="intro-header" style="background-image: url(<%= @article.image.url %>)">
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 col-lg-offset-8 col-md-6 col-md-offset-1">
+        <div class="col-lg-6">
           <div class="post-heading">
             <div class="heading_well">
               <h1>    <%= @article.title %></h1>
               <h2 class="subheading">    <%= @article.subtitle %></h2>
-              <span class="meta">Posted by <a href="#">Start Bootstrap</a> on August 24, 2014</span>
+              <span class="meta">Posted by <a href="#"><%= @article.user.name %></a> <%= @article.created_at.strftime("%B %d, %Y") %>.</span>
             </div>
           </div>
         </div>
