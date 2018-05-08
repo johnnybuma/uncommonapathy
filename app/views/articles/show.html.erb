@@ -1,36 +1,38 @@
 
-  <p>
-    <strong>Title:</strong>
-    <%= @article.title %>
-  </p>
 
-  <p>
-    <strong>Image:</strong>
-    <%= link_to @article.image.url do %>
-        <%= image_tag(@article.image.url) %>
-    <% end %>  </p>
 
-  <p>
-    <strong>Subtitle:</strong>
-    <%= @article.subtitle %>
-  </p>
 
-  <p>
-    <strong>Slug:</strong>
-    <%= @article.slug %>
-  </p>
 
-  <p>
-    <strong>Body:</strong>
-    <%= @article.body.html_safe %>
-  </p>
+  <!-- Page Header -->
+  <!-- Set your background image for this header on the line below. -->
+  <header class="intro-header" style="background-image: url(<%= @article.image.url %>)">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-lg-offset-8 col-md-6 col-md-offset-1">
+          <div class="post-heading">
+            <div class="heading_well">
+              <h1>    <%= @article.title %></h1>
+              <h2 class="subheading">    <%= @article.subtitle %></h2>
+              <span class="meta">Posted by <a href="#">Start Bootstrap</a> on August 24, 2014</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-  <p>
-    <strong>Keyword:</strong>
-    <%= @article.keyword %>
-  </p>
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
+          <%= @article.body.html_safe %>
+
+
+        </div>
+      </div>
+    </div>
+  </article>
   <%= link_to 'Edit', edit_article_path(@article) %> |
   <%= link_to 'Back', articles_path %>
-
-

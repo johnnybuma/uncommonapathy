@@ -11,7 +11,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 
-gem "wysiwyg-rails"
+gem 'bootstrap-wysihtml5-rails'
+
+gem 'ckeditor'
+
+
 gem 'paperclip', '~> 5.1.0'
 gem 'aws-sdk',   '~> 2.6'
 #gem 'aws-sdk-s3'

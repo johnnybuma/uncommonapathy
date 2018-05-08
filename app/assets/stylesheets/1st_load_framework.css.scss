@@ -2,30 +2,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-@import "froala_editor.min";
-@import "froala_style.min";
-@import "font-awesome-sprockets";
-@import "font-awesome";
+
+@import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
 
 
-
-@import 'plugins/char_counter.min.css';
-@import 'plugins/code_view.min.css';
-@import 'plugins/colors.min.css';
-@import 'plugins/emoticons.min.css';
-@import 'plugins/file.min.css';
-@import 'plugins/fullscreen.min.css';
-@import 'plugins/help.min.css';
-@import 'plugins/image_manager.min.css';
-@import 'plugins/image.min.css';
-@import 'plugins/line_breaker.min.css';
-@import 'plugins/quick_insert.min.css';
-@import 'plugins/special_characters.min.css';
-@import 'plugins/table.min.css';
-@import 'plugins/video.min.css';
-
-@import 'third_party/embedly.min.css';
-@import 'third_party/spell_checker.min.css';
 
 // make all images responsive by default
 img {
@@ -116,4 +96,33 @@ section {
 }
 .container {
   //margin-top: 61px;
+}
+
+@media screen and (max-width: 768px) {
+
+  .navbar-default .navbar-toggle {
+    border-color: white ;
+  }
+
+  .navbar-toggle {
+    background-color: white;
+  }
+
+  .navbar-default .navbar-brand {
+    color: white;
+  }
+  .navbar-default .navbar-nav > li > a {
+    color: white;
+  }
+}
+
+.heading_well {
+  border-color: grey;
+  border-radius: 5%;
+  background-color: rgba(0,0,0,0.4);
+  padding: 50px;
+}
+
+.btn_down {
+  margin-top: 15px;
 }

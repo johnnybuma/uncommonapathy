@@ -11,36 +11,54 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+    <div class="col-md-3">
+      <div class="col-md-12">
+        <%= form.hidden_field :user, value: current_user.name %>
+        <div class="form-group">
 
-  <div class="field">
-    <%= form.label :subtitle %>
-    <%= form.text_field :subtitle %>
-  </div>
+          <%= form.label :title %>
+          <%= form.text_field :title, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= form.label :subtitle %>
+          <%= form.text_field :subtitle, class: 'form-control' %>
 
-  <div class="field">
-    <%= form.label :slug %>
-    <%= form.text_field :slug %>
-  </div>
+        </div>
 
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
-  </div>
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
+        <div class="form-group">
+          <%= form.label :slug %>
+          <%= form.text_field :slug, class: 'form-control' %>
 
-  <div class="field">
-    <%= form.label :keyword %>
-    <%= form.text_field :keyword %>
-  </div>
+        </div>
+        <div class="form-group">
+          <%= form.label :image %>
+          <%= form.file_field :image, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= form.label :keyword %>
+          <%= form.text_field :keyword, class: 'form-control' %>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= form.label :body %>
+          <%= form.cktext_area :body %>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-primary btn_down' %>
   </div>
+
+
 <% end %>
