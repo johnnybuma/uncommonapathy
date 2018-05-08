@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
-  before_create :pay_with_card, unless: Proc.new { |user| user.admin? }
+  #before_create :pay_with_card, unless: Proc.new { |user| user.admin? }
+  #stop requiring payment
+
   after_create :sign_up_for_mailing_list
 
   attr_accessor :stripeToken
