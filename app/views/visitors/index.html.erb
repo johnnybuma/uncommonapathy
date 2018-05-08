@@ -5,9 +5,10 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="site-heading">
-                    <h1>Uncommon Apothy</h1>
-                    <hr class="small">
-                    <span class="subheading"> Uncommon words for an apathetic world. </span>
+                  <!--
+                    <h1></h1>
+                    <hr class="small">-->
+                    <span class="subheading"> uncommon words in an apathetic world </span>
                 </div>
             </div>
         </div>
@@ -21,19 +22,33 @@
 
 
           <% @articles.each do |article| %>
+              <%= link_to article_path(article) do %>
 
-              <div class="post-preview">
-                <%= link_to article_path(article) do %>
-                    <h2 class="post-title">
-                      <%= article.title %>
-                    </h2>
-                    <h3 class="post-subtitle">
-                      <%= article.subtitle %>
-                    </h3>
-                <% end %>
-                <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 24, 2014</p>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="col-md-12">
+                    <%= image_tag article.image.url(:medium) %>
+
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="col-md-12">
+                    <div class="post-preview">
+                      <h2 class="post-title">
+                        <%= article.title %>
+                      </h2>
+                      <h3 class="post-subtitle">
+                        <%= article.subtitle %>
+                      </h3>
+
+                    </div>
+                  </div>
+                </div>
               </div>
 
+              <% end %>
+              <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 24, 2014</p>
+              <hr>
           <% end %>
 
 
