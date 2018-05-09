@@ -87,32 +87,43 @@ section {
 }
 
 .main-content {
-  margin-top: 61px;
+  margin-top: 60px;
   //background-color: grey;
 }
 
 .navbar-custom {
-  background-color: grey;
+  background-color: white;
 }
 .container {
   //margin-top: 61px;
 }
 
+
+.navbar-default .navbar-toggle {
+  border-color: black ;
+}
+
+.navbar-toggle {
+  background-color: transparent;
+}
+
+.navbar-default .navbar-brand {
+  color: black;
+}
+.navbar-default .navbar-nav > li > a {
+  color: black;
+}
+
 @media screen and (max-width: 768px) {
 
-  .navbar-default .navbar-toggle {
-    border-color: white ;
+
+  .alert {
+    margin-top: 0;
   }
 
-  .navbar-toggle {
-    background-color: white;
-  }
 
-  .navbar-default .navbar-brand {
-    color: white;
-  }
-  .navbar-default .navbar-nav > li > a {
-    color: white;
+  .main-content {
+    margin-top: 50px;
   }
 }
 
@@ -133,4 +144,14 @@ section {
   overflow: hidden;
   height: 100%;
   z-index: 2;
+}
+
+.alert-dismissible {
+
+  margin: 0;
+  border-radius: 0;
+}
+
+.right {
+  float: right;
 }
