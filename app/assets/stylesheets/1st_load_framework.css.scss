@@ -5,7 +5,7 @@
 
 @import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
 
-
+@import url('https://fonts.googleapis.com/css?family=Contrail+One|Orbitron|Vidaloka');
 
 // make all images responsive by default
 img {
@@ -123,6 +123,14 @@ section {
   padding: 50px;
 }
 
+
 .btn_down {
   margin-top: 15px;
+}
+
+.overlay_black {
+  background: rgba(39,62,84,0.82);
+  overflow: hidden;
+  height: 100%;
+  z-index: 2;
 }
