@@ -1,12 +1,4 @@
 <%# add navigation links to this file %>
-<% if user_signed_in? %>
-
-  <% if current_user.admin? %>
 
 
     <li><%= link_to 'Articles', articles_path %></li>
-
-
-  <% end %>
-
-<% end %>

@@ -1,35 +1,51 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Articles</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Subtitle</th>
-      <th>Slug</th>
-      <th>Body</th>
-      <th>Keyword</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
+<div class="row row_down">
+
+
+  <div class="col-md-8">
+    <h1>Featured Article</h1>
+    <hr>
+
+    <%= render 'articles/highlight', :locals => { article: @featured }  %>
+
+  </div>
+
+
+  <div class="col-md-4">
+
+    <h1>Recent Articles</h1>
+    <hr>
+
     <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.subtitle %></td>
-        <td><%= article.slug %></td>
-        <td><%= article.body %></td>
-        <td><%= article.keyword %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <%= link_to article_path(article) do %>
+
+            <div class="col-md-4">
+              <div class="col-md-12">
+                <%= image_tag article.image.url(:medium) %>
+
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="col-md-12">
+                <div class="post-preview">
+                  <h2 class="post-title">
+                    <%= article.title %>
+                  </h2>
+                  <h3 class="post-subtitle">
+                    <%= article.subtitle %>
+                  </h3>
+
+                </div>
+              </div>
+            </div>
+
+        <% end %>
+        <p class="post-meta">Posted by <a href="#"><%= article.user.name %></a> <%= article.created_at.strftime("%B %d, %Y") %>.</p>
+        <hr>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
-<br>
 
-<%= link_to 'New Article', new_article_path %>
+</div>

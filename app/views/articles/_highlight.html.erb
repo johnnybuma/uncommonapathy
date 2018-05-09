@@ -1,0 +1,36 @@
+
+
+
+
+
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header" style="background-image: url(<%= Article.last.image.url %>)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="post-heading">
+          <div class="heading_well">
+            <h1>    <%= Article.last.title %></h1>
+            <h2 class="subheading">    <%= Article.last.subtitle %></h2>
+            <span class="meta">Posted by <a href="#"><%= Article.last.user.name %></a> <%= Article.last.created_at.strftime("%B %d, %Y") %>.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+        <%= Article.last.body.html_safe %>
+
+
+      </div>
+    </div>
+  </div>
+</article>
