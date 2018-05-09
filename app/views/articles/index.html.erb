@@ -4,22 +4,24 @@
 <div class="row row_down">
 
 
-  <div class="col-md-8">
+  <div class="col-md-8 scroll">
     <h1>Featured Article</h1>
     <hr>
 
-    <%= render 'articles/highlight', :locals => { article: @featured }  %>
+    <div id="show_article">
+      <%= render 'articles/highlight', :locals => { article: @featured }  %>
+    </div>
 
   </div>
 
 
-  <div class="col-md-4">
+  <div class="col-md-4 scroll">
 
     <h1>Recent Articles</h1>
     <hr>
 
     <% @articles.each do |article| %>
-        <%= link_to article_path(article) do %>
+        <%= link_to article_path(article), remote: true do %>
 
             <div class="col-md-4">
               <div class="col-md-12">
