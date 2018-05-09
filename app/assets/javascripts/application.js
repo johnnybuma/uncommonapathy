@@ -21,5 +21,10 @@
 
 $(document).ready(function () {
 
+    CKEDITOR.config.disableNativeSpellChecker = false;
+
+    CKEDITOR.config.scayt_autoStartup = true;
+
+
 
 });
