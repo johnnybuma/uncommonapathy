@@ -1,7 +1,10 @@
 <div class="form-group">
   <%= content_tag(:label) do %>
-      <% unless current_user.voted_for?(@poll) %>
-          <%= radio_button_tag 'vote_option[id]', option.id %>
+
+      <% if user_signed_in? %>
+        <% unless current_user.voted_for?(@poll) %>
+            <%= radio_button_tag 'vote_option[id]', option.id %>
+        <% end %>
       <% end %>
       <%= option.title %>
   <% end %>

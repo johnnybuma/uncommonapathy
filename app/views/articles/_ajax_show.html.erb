@@ -34,3 +34,62 @@
     </div>
   </div>
 </article>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+    <% @article.polls.each do |poll| %>
+
+        <div class="well">
+          <h2><%= poll.topic %></h2>
+
+          <%= form_tag votes_path, method: :post, remote: true, id: 'voting_form' do %>
+              <%= hidden_field_tag 'poll[id]', poll.id %>
+
+              <% if user_signed_in? %>
+
+                  <%= render partial: 'polls/vote_option', collection: poll.vote_options, as: :option %>
+
+              <% else %>
+
+                  <% poll.vote_options.each do |option| %>
+
+                      <%= visualize_votes_for option %>
+
+                  <% end %>
+
+              <% end %>
+              <p><b>Total votes: <%= poll.votes_summary %></b></p>
+
+
+              <% if user_signed_in? %>
+                  <% if current_user.voted_for?(poll) %>
+                      <p>You have already voted!</p>
+                  <% else %>
+                      <%= submit_tag 'Vote', class: 'btn btn-lg btn-primary' %>
+                  <% end %>
+
+              <% else %>
+                  <%= link_to 'Sign up to participate in poll', new_user_registration_path, class: 'btn btn-primary' %>
+
+              <% end %>
+
+          <% end %>
+        </div>
+
+
+
+
+    <% end %>
+
+
+    <% if user_signed_in? %>
+        <% if current_user.admin? %>
+            <%= link_to 'Edit', edit_article_path(@article) %> |
+
+        <% end %>
+    <% end %>
+
+  </div>
+</div>
+
