@@ -18,7 +18,7 @@ class User < ApplicationRecord
 
 
   def voted_for?(poll)
-    Rails.cache.fetch('user_' + id.to_s + '_voted_for_' + poll.id.to_s) { vote_options.any? {|v| v.poll == poll } }
+    vote_options.any? {|v| v.poll == poll }
   end
 
   # Include default devise modules. Others available are:
