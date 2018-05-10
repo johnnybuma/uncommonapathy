@@ -1,5 +1,7 @@
 class ArticleCategoriesController < ApplicationController
   before_action :set_article_category, only: [:show, :edit, :update, :destroy]
+  before_action :admin_only, :except => :show
+
 
   # GET /article_categories
   # GET /article_categories.json
@@ -62,6 +64,19 @@ class ArticleCategoriesController < ApplicationController
   end
 
   private
+
+    def admin_only
+      if user_signed_in?
+        unless current_user.admin?
+          redirect_to root_path, :alert => "Access denied."
+        end
+
+      else
+        redirect_to root_path, :alert => "Access denied."
+
+      end
+
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_article_category
       @article_category = ArticleCategory.find(params[:id])

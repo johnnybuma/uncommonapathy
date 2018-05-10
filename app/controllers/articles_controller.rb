@@ -2,6 +2,8 @@ class ArticlesController < ApplicationController
 
   before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :admin_only, :except => [:show, :index]
+
 
   # GET /articles
   # GET /articles.json
@@ -80,5 +82,18 @@ class ArticlesController < ApplicationController
     def article_params
       #params.require(:article).permit(:title, :subtitle, :slug, :body, :keyword, :image, :user, :article_category_ids)
       params.require(:article).permit!
+    end
+
+    def admin_only
+      if user_signed_in?
+        unless current_user.admin?
+          redirect_to root_path, :alert => "Access denied."
+        end
+
+      else
+        redirect_to root_path, :alert => "Access denied."
+
+      end
+
     end
 end
