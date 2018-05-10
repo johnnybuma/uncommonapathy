@@ -4,6 +4,8 @@ class Article < ApplicationRecord
 
   has_and_belongs_to_many :article_categories
 
+  has_one :poll
+
   has_attached_file :image, styles: {
       thumb: '100x100>',
       square: '200x200#',

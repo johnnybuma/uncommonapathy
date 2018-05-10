@@ -16,6 +16,8 @@
 //= require bootstrap-wysihtml5
 //= require ckeditor/init
 //= require bootstrap-multiselect
+//= require cocoon
+
 
 //= require_tree .
 

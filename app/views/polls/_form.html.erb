@@ -1,0 +1,37 @@
+<%= form_for @poll do |f| %>
+    <% if @poll.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@poll.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+          <ul>
+            <% @poll.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="form-group">
+      <%= f.label :article %>
+      <%= f.select :article_id, options_from_collection_for_select(Article.all, :id, :title), class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :topic %>
+      <%= f.text_area :topic, rows: 3, required: true, class: 'form-control' %>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Options</div>
+      <div class="panel-body">
+        <%= f.fields_for :vote_options do |options_form| %>
+            <%= render 'vote_option_fields', f: options_form %>
+        <% end %>
+
+        <div class="links">
+          <%= link_to_add_association 'add option', f, :vote_options %>
+        </div>
+
+      </div>
+    </div>
+
+    <%= f.submit 'Create', class: 'btn btn-primary btn-lg' %>
+<% end %>
