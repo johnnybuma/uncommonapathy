@@ -11,6 +11,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 
+gem 'bootstrap-multiselect_rails', '~> 0.9.4'
+
+
 gem 'bootstrap-wysihtml5-rails'
 
 gem 'ckeditor'

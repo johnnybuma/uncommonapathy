@@ -2,6 +2,8 @@ class Article < ApplicationRecord
 
   belongs_to :user
 
+  has_and_belongs_to_many :article_categories
+
   has_attached_file :image, styles: {
       thumb: '100x100>',
       square: '200x200#',

@@ -15,6 +15,7 @@
 //= require bootstrap-sprockets
 //= require bootstrap-wysihtml5
 //= require ckeditor/init
+//= require bootstrap-multiselect
 
 //= require_tree .
 
@@ -25,6 +26,13 @@ $(document).ready(function () {
 
     CKEDITOR.config.scayt_autoStartup = true;
 
+    $('#multi_select').multiselect({
+        enableFiltering: true,
+        includeSelectAllOption: true,
+        selectAllJustVisible: false,
+        numberDisplayed: 1
+
+    });
 
 
 });
