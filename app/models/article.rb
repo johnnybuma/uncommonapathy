@@ -6,6 +6,8 @@ class Article < ApplicationRecord
 
   has_many :polls
 
+  before_save :slug_slug
+
   has_attached_file :image, styles: {
       thumb: '100x100>',
       square: '200x200#',
@@ -19,6 +21,9 @@ class Article < ApplicationRecord
     string.parameterize.truncate(80, omission: '')
   end
 
+  def slug_slug
+    self.slug = to_slug(self.title)
+  end
 
   def self.add_slugs
     update(slug: to_slug(slug))
