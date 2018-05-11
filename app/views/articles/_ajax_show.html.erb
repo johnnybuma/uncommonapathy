@@ -17,6 +17,9 @@
           </div>
         </div>
       </div>
+      <div class="col-lg-6">
+
+      </div>
     </div>
   </div>
 </header>
@@ -43,12 +46,28 @@
         <div class="well">
           <h2><%= poll.topic %></h2>
 
-          <%= form_tag votes_path, method: :post, remote: true, id: 'voting_form' do %>
+          <%= form_tag votes_path, method: :post, id: 'voting_form' do %>
               <%= hidden_field_tag 'poll[id]', poll.id %>
 
               <% if user_signed_in? %>
 
-                  <%= render partial: 'polls/vote_option', collection: poll.vote_options, as: :option %>
+
+                  <div class="form-group">
+
+
+                    <% poll.vote_options.each do |option| %>
+
+                        <% unless current_user.voted_for?(poll) %>
+                            <%= radio_button_tag 'vote_option[id]', option.id %>
+                        <% end %>
+                        <%= option.title %>
+
+                        <%= visualize_votes_for option %>
+
+                    <% end %>
+
+                  </div>
+
 
               <% else %>
 
@@ -87,8 +106,11 @@
         <% if current_user.admin? %>
             <%= link_to 'Edit', edit_article_path(@article) %> |
 
+            <%= link_to 'Back', articles_path %>
+
         <% end %>
     <% end %>
+    <%= link_to 'Articles', articles_path, class: 'btn btn-default' %>
 
   </div>
 </div>

@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
 
+  include ArticlesHelper
+
   before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_action :admin_only, :except => [:show, :index]
@@ -37,6 +39,8 @@ class ArticlesController < ApplicationController
 
     @article.user = current_user
 
+    @article.slug = to_slug(@article.slug)
+
     respond_to do |format|
       if @article.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
@@ -51,6 +55,9 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
+
+    @article.slug = to_slug(@article.slug)
+
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
@@ -75,7 +82,7 @@ class ArticlesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
-      @article = Article.find(params[:id])
+      @article = Article.find_by_slug(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

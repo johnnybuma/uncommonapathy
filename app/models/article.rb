@@ -15,5 +15,17 @@ class Article < ApplicationRecord
   # Validate the attached image is image/jpg, image/png, etc
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
+  def to_slug(string)
+    string.parameterize.truncate(80, omission: '')
+  end
+
+
+  def self.add_slugs
+    update(slug: to_slug(slug))
+  end
+
+  def to_param
+    slug
+  end
 
 end
