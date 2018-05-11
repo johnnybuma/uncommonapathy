@@ -23,84 +23,83 @@
   </header>
 
   <!-- Post Content -->
-  <article>
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="col-md-8">
 
-          <%= @article.body.html_safe %>
+          <article>
+            <%= @article.body.html_safe %>
+          </article>
+
+
+        </div>
+        <div class="col-md-4">
+
+          <% @article.polls.each do |poll| %>
+
+              <div class="well">
+                <h4><%= poll.topic %></h4>
+
+                <%= form_tag votes_path, method: :post, id: 'voting_form' do %>
+                    <%= hidden_field_tag 'poll[id]', poll.id %>
+
+                    <% if user_signed_in? %>
+
+
+                        <div class="form-group">
+
+
+                          <% poll.vote_options.each do |option| %>
+
+                              <% unless current_user.voted_for?(poll) %>
+                                  <%= radio_button_tag 'vote_option[id]', option.id %>
+                              <% end %>
+                              <%= option.title %>
+
+                              <%= visualize_votes_for option %>
+
+                          <% end %>
+
+                        </div>
+
+
+                    <% else %>
+
+                        <% poll.vote_options.each do |option| %>
+
+                            <%= visualize_votes_for option %>
+
+                        <% end %>
+
+                    <% end %>
+                    <p><b>Total votes: <%= poll.votes_summary %></b></p>
+
+
+                    <% if user_signed_in? %>
+                        <% if current_user.voted_for?(poll) %>
+                            <p>You have already voted!</p>
+                        <% else %>
+                            <%= submit_tag 'Vote', class: 'btn btn-lg btn-primary' %>
+                        <% end %>
+
+                    <% else %>
+                        <%= link_to 'Sign up to participate', new_user_registration_path, class: 'btn btn-primary' %>
+
+                    <% end %>
+
+                <% end %>
+              </div>
+
+
+
+
+          <% end %>
 
 
         </div>
       </div>
     </div>
-  </article>
-
-
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-
-      <% @article.polls.each do |poll| %>
-
-          <div class="well">
-            <h4><%= poll.topic %></h4>
-
-            <%= form_tag votes_path, method: :post, id: 'voting_form' do %>
-                <%= hidden_field_tag 'poll[id]', poll.id %>
-
-                <% if user_signed_in? %>
-
-
-                    <div class="form-group">
-
-
-                      <% poll.vote_options.each do |option| %>
-
-                          <% unless current_user.voted_for?(poll) %>
-                              <%= radio_button_tag 'vote_option[id]', option.id %>
-                          <% end %>
-                          <%= option.title %>
-
-                          <%= visualize_votes_for option %>
-
-                      <% end %>
-
-                    </div>
-
-
-                <% else %>
-
-                    <% poll.vote_options.each do |option| %>
-
-                        <%= visualize_votes_for option %>
-
-                    <% end %>
-
-                <% end %>
-                <p><b>Total votes: <%= poll.votes_summary %></b></p>
-
-
-                <% if user_signed_in? %>
-                    <% if current_user.voted_for?(poll) %>
-                        <p>You have already voted!</p>
-                    <% else %>
-                        <%= submit_tag 'Vote', class: 'btn btn-lg btn-primary' %>
-                    <% end %>
-
-                <% else %>
-                    <%= link_to 'Sign up to participate', new_user_registration_path, class: 'btn btn-primary' %>
-
-                <% end %>
-
-            <% end %>
-          </div>
 
 
 
-
-      <% end %>
-
-
-    </div>
-  </div>
 
