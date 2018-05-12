@@ -1,7 +1,28 @@
 
 
 
-<div class="row row_down">
+<header class="intro-header">
+  <div class="container-fluid overlay_black">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+
+
+
+        <div class="site-heading">
+          <%= image_tag('resonance_w.png') %>
+          <hr>
+          <h4>Parsing public sentiment of today's most critical issues.</h4>
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class=" row_down">
 
 
   <div class="col-md-8 scroll">
@@ -20,7 +41,7 @@
     <h1>Recent Articles</h1>
     <hr>
 
-    <% @articles.each do |article| %>
+    <% @articles.reverse.each do |article| %>
         <%= link_to article_path(article), remote: true do %>
 
             <div class="col-md-4">

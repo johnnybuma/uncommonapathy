@@ -20,6 +20,8 @@ gem 'bootstrap-wysihtml5-rails'
 
 gem 'ckeditor'
 
+gem 'sitemap_generator'
+
 
 gem 'paperclip', '~> 5.1.0'
 gem 'aws-sdk',   '~> 2.6'

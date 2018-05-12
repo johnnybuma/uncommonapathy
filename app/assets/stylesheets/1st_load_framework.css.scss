@@ -168,3 +168,37 @@ section {
 .row_down {
   margin-top: 5vh;
 }
+
+
+@media (min-width: 1200px) {
+  /* line 10, /Users/LapHorse/.rvm/gems/ruby-2.3.1@uncommonapathy/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_grid.scss */
+  .container, main {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 992px){
+  .container, main {
+  }
+}
+
+@media (min-width: 768px) {
+  .container, main {
+    width: 100% !important;
+  }
+}
+
+.btn {
+  white-space: normal;
+
+}
+
+main {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+div.col-md-8.scroll {
+  margin: 0 !important;
+  padding: 0 !important;
+}
