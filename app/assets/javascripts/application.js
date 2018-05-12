@@ -22,8 +22,9 @@
 //= require_tree .
 
 
-$(document).ready(function () {
+$(document).on('ready ajaxStart ajaxStop',function () {
 
+    console.log("WTF!");
     CKEDITOR.config.disableNativeSpellChecker = false;
 
     CKEDITOR.config.scayt_autoStartup = true;
@@ -36,5 +37,18 @@ $(document).ready(function () {
 
     });
 
+
+    $(".move_it").click(function() {
+        console.log("clicked!");
+        window.scrollTo(0, 0);
+
+        var $container = $('.scroll'),
+            $scrollTo = $('#show_article');
+
+        $container.scrollTop(
+            $scrollTo.offset().top - $container.offset().top + $container.scrollTop()
+        );
+
+    });
 
 });
