@@ -21,11 +21,14 @@
 </header>
 
 <!-- Post Content -->
-<article>
+<div class="row article_div">
 
       <div class="col-md-8">
 
-        <%= Article.last.body.html_safe %>
+        <article>
+          <%= Article.last.body.html_safe %>
+
+        </article>
 
 
       </div>
@@ -107,5 +110,5 @@
 
       </div>
 
-</article>
+</div>
 

@@ -24,10 +24,13 @@
 </header>
 
 <!-- Post Content -->
-<article>
+<div class="row article_div">
 
   <div class="col-md-8">
-    <%= @article.body.html_safe %>
+    <article>
+      <%= @article.body.html_safe %>
+
+    </article>
 
   </div>
   <div class="col-md-4">
@@ -111,6 +114,6 @@
 
 
 
-</article>
+</div>
 
 
