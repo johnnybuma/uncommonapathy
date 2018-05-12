@@ -1,5 +1,8 @@
 class Article < ApplicationRecord
 
+  paginates_per 5
+
+
   belongs_to :user
 
   has_and_belongs_to_many :article_categories
@@ -31,6 +34,15 @@ class Article < ApplicationRecord
 
   def to_param
     slug
+  end
+
+
+  def previous
+    Article.where(["id < ?", id]).last
+  end
+
+  def next
+    Article.where(["id > ?", id]).first
   end
 
 end

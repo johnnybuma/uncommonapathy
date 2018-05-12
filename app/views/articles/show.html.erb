@@ -1,14 +1,17 @@
 
 
-
-
-
   <!-- Page Header -->
   <!-- Set your background image for this header on the line below. -->
   <header class="intro-header" style="background-image: url(<%= @article.image.url %>)">
     <div class="container">
       <div class="row">
         <div class="col-lg-8">
+          <% if user_signed_in? %>
+            <% if current_user.admin? %>
+              <%= link_to 'Edit Article', edit_article_path(@article), class: 'btn btn-primary' %>
+              <% end %>
+
+          <% end %>
           <div class="post-heading">
             <div class="heading_well">
               <h1>    <%= @article.title %></h1>
@@ -24,6 +27,23 @@
 
   <!-- Post Content -->
     <div class="container">
+
+
+
+
+      <div class="row">
+        <div class="col-md-12">
+          <% if @article.previous %>
+              <%= link_to 'Previous Article', @article.previous, class: 'btn btn-primary' %>
+          <% end %>
+
+          <% if @article.next %>
+              <%= link_to 'Next Article', @article.next, class: 'btn btn-primary right' %>
+
+          <% end %>
+        </div>
+      </div>
+
       <div class="row">
         <div class="col-md-8">
 
@@ -98,6 +118,9 @@
 
 
         </div>
+
+
+
       </div>
     </div>
 

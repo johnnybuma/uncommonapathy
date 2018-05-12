@@ -53,10 +53,10 @@
               <div class="col-md-12">
                 <div class="post-preview">
                   <h2 class="post-title">
-                    <%= link_to article_path(article), class: 'move_it', remote: true do %>
+                    <%= link_to article_path(article), class: 'move_it', remote: false do %>
 
-                  <%= article.title %>
-        <% end %>
+                              <%= article.title %>
+                    <% end %>
 
         </h2>
                   <h3 class="post-subtitle">
@@ -70,6 +70,9 @@
         <p class="post-meta">Posted by <a href="#"><%= article.user.name %></a> <%= article.created_at.strftime("%B %d, %Y") %>.</p>
         <hr>
     <% end %>
+
+    <%= paginate @articles %>
+
   </div>
 
 
