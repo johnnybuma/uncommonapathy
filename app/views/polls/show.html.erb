@@ -1,5 +1,9 @@
-<% content_for(:page_header) {"Share your opinion"} %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h2><%= @poll.topic %></h2>
 
-<h2><%= @poll.topic %></h2>
-
-<%= render 'voting_form' %>
+      <%= render 'voting_form' %>
+    </div>
+  </div>
+</div>
