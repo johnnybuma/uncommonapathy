@@ -1,4 +1,8 @@
 class PollsController < ApplicationController
+
+  before_action :admin_only, :except => [:show, :index]
+
+
   def index
     @polls = Poll.all
   end
@@ -48,6 +52,19 @@ class PollsController < ApplicationController
   end
 
   private
+
+  def admin_only
+    if user_signed_in?
+      unless current_user.admin?
+        redirect_to root_path, :alert => "Access denied."
+      end
+
+    else
+      redirect_to root_path, :alert => "Access denied."
+
+    end
+
+  end
 
   def poll_params
     params.require(:poll).permit(:topic, :article_id, vote_options_attributes: [:id, :title, :_destroy])
