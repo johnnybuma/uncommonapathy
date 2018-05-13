@@ -6,7 +6,7 @@
         <% if current_user %>
             <%= link_to 'Participate!', poll_path(poll), class: 'btn btn-primary btn-lg block' %>
         <% else %>
-            Please sign in via <%= link_to 'Facebook', '/auth/facebook' %> to participate in this poll.
+            Please <%= link_to 'sign in', new_user_session_path  %> to participate in this poll.
         <% end %>
       </p>
 
