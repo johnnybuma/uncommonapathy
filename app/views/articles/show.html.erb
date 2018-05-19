@@ -31,18 +31,7 @@
 
 
 
-      <div class="row">
-        <div class="col-md-12">
-          <% if @article.previous %>
-              <%= link_to 'Previous Article', @article.previous, class: 'btn btn-primary' %>
-          <% end %>
 
-          <% if @article.next %>
-              <%= link_to 'Next Article', @article.next, class: 'btn btn-primary right' %>
-
-          <% end %>
-        </div>
-      </div>
 
       <div class="row">
         <div class="col-md-8">
@@ -122,6 +111,33 @@
 
 
       </div>
+
+      <hr>
+      <div class="row">
+        <div class="col-md-12">
+          <% if @article.previous %>
+              <%= link_to @article.previous, class: 'btn btn-primary' do %>
+
+              <span class="glyphicon glyphicon-arrow-left"></span>
+
+              Previous Article
+              <% end %>
+          <% end %>
+
+          <% if @article.next %>
+              <%= link_to @article.next, class: 'btn btn-primary right' do  %>
+                  <span class="glyphicon glyphicon-arrow-right"></span>
+
+                  Next Article
+
+
+              <% end %>
+
+          <% end %>
+        </div>
+      </div>
+
+      <hr>
     </div>
 
 

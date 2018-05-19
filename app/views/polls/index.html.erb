@@ -1,30 +1,41 @@
-<% @polls.each do |poll| %>
-    <div class="well">
-      <h2><%= poll.topic %> <small>(voted: <%= poll.votes_summary %>)</small></h2>
+<div class="container">
 
-      <p>
-        <% if current_user %>
-            <%= link_to 'Participate!', poll_path(poll), class: 'btn btn-primary btn-lg block' %>
-        <% else %>
-            Please <%= link_to 'sign in', new_user_session_path  %> to participate in this poll.
+  <div class="row" style="height:5vh; min-height: 5vh"></div>
+  <div class="row">
+      <div class="col-md-12">
+        <% @polls.each do |poll| %>
+            <div class="well">
+              <h2><%= poll.topic %> <small>(voted: <%= poll.votes_summary %>)</small></h2>
+
+              <p>
+                <% if current_user %>
+                    <%= link_to 'Participate!', poll_path(poll), class: 'btn btn-primary btn-lg block' %>
+                <% else %>
+                    Please <%= link_to 'sign in', new_user_session_path  %> to participate in this poll.
+                <% end %>
+              </p>
+
+              <% if user_signed_in?  %>
+
+                  <% if current_user.admin? %>
+                      <div class="btn-group">
+                        <%= link_to 'Edit', edit_poll_path(poll), class: 'btn btn-default' %>
+                        <%= link_to 'Delete', poll_path(poll),
+                                    method: :delete,
+                                    class: 'btn btn-danger', data: {confirm: 'Are you sure?'} %>
+                      </div>
+
+                  <% end %>
+
+              <% end %>
+
+            </div>
         <% end %>
-      </p>
 
-      <% if user_signed_in?  %>
+      </div>
+  </div>
 
-        <% if current_user.admin? %>
-              <div class="btn-group">
-                <%= link_to 'Edit', edit_poll_path(poll), class: 'btn btn-default' %>
-                <%= link_to 'Delete', poll_path(poll),
-                            method: :delete,
-                            class: 'btn btn-danger', data: {confirm: 'Are you sure?'} %>
-              </div>
+</div>
 
-        <% end %>
-
-      <% end %>
-
-    </div>
-<% end %>
 
 
